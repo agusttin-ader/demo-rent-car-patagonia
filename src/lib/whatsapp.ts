@@ -2,12 +2,18 @@ function digitsOnly(phone: string): string {
   return phone.replace(/\D/g, '')
 }
 
+const DEFAULT_WA_NUMBER = '5491155555555'
+
+function isPlausibleWhatsAppDigits(n: string): boolean {
+  return n.length >= 10 && n.length <= 15
+}
+
 /** Número para wa.me; configurar VITE_WHATSAPP_NUMBER (ver .env.example). */
 export function getWhatsAppNumber(): string {
   const raw = import.meta.env.VITE_WHATSAPP_NUMBER as string | undefined
   const n = raw ? digitsOnly(raw) : ''
-  if (n.length > 0) return n
-  return '5491155555555'
+  if (isPlausibleWhatsAppDigits(n)) return n
+  return DEFAULT_WA_NUMBER
 }
 
 export function buildWhatsAppUrl(text: string): string {
@@ -16,7 +22,11 @@ export function buildWhatsAppUrl(text: string): string {
 }
 
 export function openWhatsApp(text: string): void {
-  window.open(buildWhatsAppUrl(text), '_blank', 'noopener,noreferrer')
+  const url = buildWhatsAppUrl(text)
+  const win = window.open(url, '_blank', 'noopener,noreferrer')
+  if (win == null) {
+    window.location.assign(url)
+  }
 }
 
 function formatDateTimeEs(val: string): string {

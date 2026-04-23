@@ -1,7 +1,6 @@
 import { Benefits } from '../sections/Benefits'
 import { ContactFormMap } from '../sections/ContactFormMap'
 import { FinalCta } from '../sections/FinalCta'
-import { Footer } from '../sections/Footer'
 import { ClientReviews } from '../sections/ClientReviews'
 import { Hero } from '../sections/Hero'
 import { HowItWorks } from '../sections/HowItWorks'
@@ -19,7 +18,6 @@ export default function Home() {
       <ContactFormMap />
       <ClientReviews />
       <FinalCta />
-      <Footer />
     </>
   )
 }

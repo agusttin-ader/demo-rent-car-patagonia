@@ -12,13 +12,10 @@ import {
   Plane,
   Truck,
 } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import { Button } from '../components/Button'
 import { CustomSelect, type CustomSelectOption } from '../components/CustomSelect'
 import { useBooking } from '../context/useBooking'
-import {
-  formatAvailabilityMessage,
-  openWhatsApp,
-} from '../lib/whatsapp'
 
 const CAR_TYPES: CustomSelectOption[] = [
   { value: '', label: 'Tipo de vehículo', icon: Car },
@@ -89,16 +86,11 @@ export function Hero() {
     setCarType,
   } = useBooking()
 
+  const navigate = useNavigate()
+
   const onSubmit = (e: FormEvent) => {
     e.preventDefault()
-    openWhatsApp(
-      formatAvailabilityMessage(
-        pickupLocation,
-        pickupDateTime,
-        dropoffDateTime,
-        carType,
-      ),
-    )
+    navigate('/404')
   }
 
   return (

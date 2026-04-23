@@ -1,73 +1,61 @@
-# React + TypeScript + Vite
+# Rent a Car Patagonia
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sitio público para **alquiler de vehículos en Puerto Natales y Torres del Paine**: hero con consulta rápida, flota, cómo reservar, contacto con mapa y CTAs que abren **WhatsApp** con el mensaje armado.
 
-Currently, two official plugins are available:
+Pensado para verse bien en móvil, cargar rápido y dejar el canal de venta claro sin fricción.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Qué incluye
 
-## React Compiler
+- **Inicio** con formulario de disponibilidad (tipo de auto, retiro, fechas) y enlace a WhatsApp
+- **Flota** por categorías con imágenes locales
+- **Cómo funciona**, beneficios, opiniones, bloque final con tipografía máscara sobre paisaje
+- **Contacto** con búsqueda por zona, formulario y mapa (OpenStreetMap)
+- **Rutas internas** preparadas para FAQ, políticas, etc. (404 amigable en rutas aún sin página)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Stack
 
-## Expanding the ESLint configuration
+| Área        | Tecnología                          |
+| ----------- | ----------------------------------- |
+| UI          | React 19, TypeScript, Tailwind CSS 4 |
+| Build       | Vite 6                              |
+| Navegación  | React Router                        |
+| Iconos      | Lucide React                        |
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Requisitos
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js **20+** (recomendado LTS)
+- npm (incluido con Node)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Puesta en marcha
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+cp .env.example .env
+# Editá .env y poné tu VITE_WHATSAPP_NUMBER (solo dígitos, con código país, sin +)
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Abre `http://localhost:5173`.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Scripts
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Comando        | Uso                    |
+| -------------- | ---------------------- |
+| `npm run dev`  | Servidor de desarrollo |
+| `npm run build`| Typecheck + build producción → `dist/` |
+| `npm run preview` | Servir el build localmente |
+| `npm run lint` | ESLint                 |
+
+## Variables de entorno
+
+| Variable               | Descripción                                      |
+| ---------------------- | ------------------------------------------------ |
+| `VITE_WHATSAPP_NUMBER` | Número de WhatsApp del negocio (solo dígitos).   |
+
+## Despliegue
+
+El output es estático en `dist/`: cualquier hosting estático (Vercel, Netlify, Cloudflare Pages, S3, etc.) sirve. Recordá definir `VITE_WHATSAPP_NUMBER` en el panel del proveedor al buildear.
+
+---
+
+**Desarrollo:** Agustin Ader

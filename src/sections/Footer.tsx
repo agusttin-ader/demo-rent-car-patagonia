@@ -2,6 +2,12 @@ import { Link } from 'react-router-dom'
 import { Reveal } from '../components/Reveal'
 import { buildWhatsAppUrl, getWhatsAppNumber } from '../lib/whatsapp'
 
+/** Actualizá con las URLs reales de la marca cuando estén disponibles. */
+const SOCIAL_HREF = {
+  facebook: 'https://www.facebook.com/',
+  instagram: 'https://www.instagram.com/',
+} as const
+
 const helpLinks = [
   { to: '/faq', label: 'FAQ' },
   { to: '/politicas-de-privacidad', label: 'Políticas de Privacidad' },
@@ -16,8 +22,8 @@ const emergencyTel = [
 ] as const
 
 const socialLinks = [
-  { to: '/facebook', label: 'Facebook' },
-  { to: '/instagram', label: 'Instagram' },
+  { href: SOCIAL_HREF.facebook, label: 'Facebook' },
+  { href: SOCIAL_HREF.instagram, label: 'Instagram' },
 ] as const
 
 export function Footer() {
@@ -92,13 +98,15 @@ export function Footer() {
             <p className="text-sm font-bold text-white">Redes</p>
             <ul className="mt-3 flex flex-wrap gap-4 text-sm">
               {socialLinks.map((s) => (
-                <li key={s.to}>
-                  <Link
-                    to={s.to}
+                <li key={s.href}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-stone-400 underline decoration-white/15 underline-offset-4 transition-colors duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:text-brand-sky"
                   >
                     {s.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
