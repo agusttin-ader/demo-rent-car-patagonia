@@ -98,7 +98,7 @@ export function Hero() {
       className="relative bg-white"
       aria-labelledby="hero-heading"
     >
-      <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-10 sm:gap-10 sm:px-6 sm:py-14 lg:grid-cols-2 lg:gap-12 lg:px-8 lg:py-16">
+      <div className="site-container grid items-center gap-6 py-8 min-[400px]:gap-8 min-[400px]:py-10 sm:gap-10 sm:py-14 lg:grid-cols-2 lg:gap-12 lg:py-16 min-[1920px]:gap-14 min-[1920px]:py-20 min-[2560px]:gap-16 min-[2560px]:py-24">
         <div className="relative z-20 min-w-0">
           <p
             className="hero-motion-item text-sm font-semibold uppercase tracking-wider text-brand-teal"
@@ -108,13 +108,13 @@ export function Hero() {
           </p>
           <h1
             id="hero-heading"
-            className="hero-motion-item mt-3 text-balance text-4xl font-bold leading-[1.1] tracking-tight text-brand-ink sm:text-[2.8rem] lg:text-[3rem]"
+            className="hero-motion-item mt-3 text-balance text-[clamp(1.6rem,6vw+0.2rem,2.25rem)] font-bold leading-[1.12] tracking-tight text-brand-ink min-[400px]:text-4xl sm:text-[2.75rem] sm:leading-[1.1] lg:text-[3rem] min-[1920px]:text-[3.35rem] min-[2560px]:text-[3.65rem] min-[3840px]:text-[4rem]"
             style={{ '--hero-delay': '110ms' } as CSSProperties}
           >
             Forma rápida y simple de alquilar tu auto
           </h1>
           <p
-            className="hero-motion-item mt-4 max-w-lg text-pretty text-[1.05rem] leading-relaxed text-brand-ink/75"
+            className="hero-motion-item mt-4 max-w-lg text-pretty text-base leading-relaxed text-brand-ink/75 min-[400px]:text-lg min-[1920px]:max-w-xl min-[1920px]:text-xl min-[2560px]:text-[1.35rem]"
             style={{ '--hero-delay': '180ms' } as CSSProperties}
           >
             Una experiencia única, confiable y segura para recorrer Torres del
@@ -124,12 +124,12 @@ export function Hero() {
 
           <form
             onSubmit={onSubmit}
-            className="hero-motion-item mt-8 space-y-3.5"
+            className="hero-motion-item mt-6 space-y-3 sm:mt-8 sm:space-y-3.5"
             style={{ '--hero-delay': '250ms' } as CSSProperties}
           >
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="text-left sm:col-span-2">
-                <label htmlFor="hero-car-type" className="mb-2 block text-sm font-medium text-brand-ink">
+            <div className="grid min-w-0 gap-2.5 min-[400px]:gap-3 sm:grid-cols-2 sm:gap-4">
+              <div className="min-w-0 text-left sm:col-span-2">
+                <label htmlFor="hero-car-type" className="mb-1.5 block text-sm font-medium text-brand-ink sm:mb-2 sm:text-base">
                   Tipo de vehículo
                 </label>
                 <CustomSelect
@@ -140,8 +140,8 @@ export function Hero() {
                   placeholder="Tipo de vehículo"
                 />
               </div>
-              <div className="text-left sm:col-span-2">
-                <label htmlFor="hero-pickup" className="mb-2 block text-sm font-medium text-brand-ink">
+              <div className="min-w-0 text-left sm:col-span-2">
+                <label htmlFor="hero-pickup" className="mb-1.5 block text-sm font-medium text-brand-ink sm:mb-2 sm:text-base">
                   Lugar de retiro
                 </label>
                 <CustomSelect
@@ -152,8 +152,8 @@ export function Hero() {
                   placeholder="Lugar de retiro"
                 />
               </div>
-              <div className="text-left">
-                <label htmlFor="hero-pickup-dt" className="mb-2 block text-sm font-medium text-brand-ink">
+              <div className="min-w-0 text-left">
+                <label htmlFor="hero-pickup-dt" className="mb-1.5 block text-sm font-medium text-brand-ink sm:mb-2 sm:text-base">
                   Retiro — fecha y hora
                 </label>
                 <input
@@ -161,11 +161,11 @@ export function Hero() {
                   type="datetime-local"
                   value={pickupDateTime}
                   onChange={(e) => setPickupDateTime(e.target.value)}
-                  className="input-pill"
+                  className="input-pill min-h-10 sm:min-h-11"
                 />
               </div>
-              <div className="text-left">
-                <label htmlFor="hero-dropoff-dt" className="mb-2 block text-sm font-medium text-brand-ink">
+              <div className="min-w-0 text-left">
+                <label htmlFor="hero-dropoff-dt" className="mb-1.5 block text-sm font-medium text-brand-ink sm:mb-2 sm:text-base">
                   Devolución — fecha y hora
                 </label>
                 <input
@@ -173,11 +173,15 @@ export function Hero() {
                   type="datetime-local"
                   value={dropoffDateTime}
                   onChange={(e) => setDropoffDateTime(e.target.value)}
-                  className="input-pill"
+                  className="input-pill min-h-10 sm:min-h-11"
                 />
               </div>
             </div>
-            <Button type="submit" variant="primary" className="w-full py-3.5 text-base sm:w-auto sm:min-w-[190px]">
+            <Button
+              type="submit"
+              variant="primary"
+              className="w-full min-h-10 py-2.5 text-sm sm:w-auto sm:min-h-11 sm:min-w-[190px] sm:py-3.5 sm:text-base min-[1920px]:min-h-12 min-[1920px]:px-8 min-[1920px]:text-[1.05rem]"
+            >
               Buscar disponibilidad
             </Button>
           </form>
@@ -185,13 +189,13 @@ export function Hero() {
 
         <div className="relative mx-auto w-full max-w-lg lg:mx-0 lg:max-w-none">
           <div
-            className="hero-motion-media absolute -right-2 top-1/2 z-0 hidden h-[min(100%,460px)] w-[min(100%,480px)] -translate-y-1/2 rounded-[2.5rem] bg-brand-teal md:block lg:-right-6 lg:h-[min(92vh,520px)] lg:w-[min(100%,560px)] xl:h-[min(92vh,580px)] xl:w-[min(100%,600px)]"
+            className="hero-motion-media absolute -right-2 top-1/2 z-0 hidden h-[min(100%,460px)] w-[min(100%,480px)] -translate-y-1/2 rounded-[2.5rem] bg-brand-teal md:block lg:-right-6 lg:h-[min(92vh,520px)] lg:w-[min(100%,560px)] xl:h-[min(92vh,580px)] xl:w-[min(100%,600px)] min-[1920px]:lg:h-[min(92vh,600px)] min-[1920px]:lg:w-[min(100%,640px)] min-[2560px]:lg:h-[min(92vh,680px)] min-[2560px]:lg:w-[min(100%,720px)]"
             style={{ '--hero-media-delay': '80ms' } as CSSProperties}
             aria-hidden
           />
           <div className="relative z-10 flex justify-center md:justify-end">
             <div
-              className="hero-motion-media w-full max-w-md overflow-hidden rounded-3xl bg-white p-2 shadow-xl shadow-brand-teal/10 sm:max-w-lg sm:p-3 md:max-w-xl md:rounded-[2rem] md:bg-transparent md:p-0 md:shadow-none lg:max-w-2xl"
+              className="hero-motion-media w-full max-w-md overflow-hidden rounded-3xl bg-white p-2 shadow-xl shadow-brand-teal/10 sm:max-w-lg sm:p-3 md:max-w-xl md:rounded-[2rem] md:bg-transparent md:p-0 md:shadow-none lg:max-w-2xl min-[1920px]:lg:max-w-[48rem] min-[2560px]:lg:max-w-[52rem]"
               style={{ '--hero-media-delay': '140ms' } as CSSProperties}
             >
               <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-stone-100 sm:aspect-[16/10] md:rounded-[1.75rem] lg:aspect-[16/9]">

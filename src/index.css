@@ -30,6 +30,97 @@
 
 html {
   scroll-behavior: smooth;
+  /* Anclas (#contacto, etc.) con header sticky */
+  scroll-padding-top: 5rem;
+  /* ~8% más grande que el default del navegador; respeta zoom/accesibilidad */
+  font-size: 108%;
+  /* Toque en móvil: feedback sutil sin bloquear pintura */
+  -webkit-tap-highlight-color: color-mix(in srgb, var(--color-brand-teal) 16%, transparent);
+}
+
+@media (min-width: 1024px) {
+  html {
+    scroll-padding-top: 5.5rem;
+  }
+}
+
+/* Animaciones un poco más rápidas en móvil = sensación más ágil */
+@media (max-width: 639px) {
+  :root {
+    --motion-duration: 0.52s;
+    --motion-duration-short: 0.28s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/**
+ * Contenedor horizontal único: iPhone SE (320px) → monitores 4K.
+ * max-width crece en pasos para no dejar líneas demasiado largas en pantallas grandes.
+ */
+.site-container {
+  margin-inline: auto;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 80rem;
+  padding-left: max(0.75rem, env(safe-area-inset-left, 0px));
+  padding-right: max(0.75rem, env(safe-area-inset-right, 0px));
+}
+
+@media (min-width: 400px) {
+  .site-container {
+    padding-left: max(1rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (min-width: 640px) {
+  .site-container {
+    padding-left: max(1.5rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1.5rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-container {
+    padding-left: max(2rem, env(safe-area-inset-left, 0px));
+    padding-right: max(2rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (min-width: 1536px) {
+  .site-container {
+    padding-left: max(2.5rem, env(safe-area-inset-left, 0px));
+    padding-right: max(2.5rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (min-width: 1920px) {
+  .site-container {
+    max-width: 100rem;
+    padding-left: max(3rem, env(safe-area-inset-left, 0px));
+    padding-right: max(3rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (min-width: 2560px) {
+  .site-container {
+    max-width: 120rem;
+    padding-left: max(3.5rem, env(safe-area-inset-left, 0px));
+    padding-right: max(3.5rem, env(safe-area-inset-right, 0px));
+  }
+}
+
+@media (min-width: 3840px) {
+  .site-container {
+    max-width: 140rem;
+    padding-left: max(4rem, env(safe-area-inset-left, 0px));
+    padding-right: max(4rem, env(safe-area-inset-right, 0px));
+  }
 }
 
 body {
@@ -41,6 +132,8 @@ body {
   background-color: var(--color-brand-cream);
   color: var(--color-brand-ink);
   overflow-x: clip;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 #root {
@@ -57,7 +150,6 @@ body {
     opacity var(--motion-duration) var(--motion-ease-out),
     transform var(--motion-duration) var(--motion-ease-out);
   transition-delay: var(--reveal-delay);
-  will-change: opacity, transform;
 }
 
 .motion-reveal-visible {
@@ -185,7 +277,6 @@ body {
     transform: none;
     transition: none;
     animation: none;
-    will-change: auto;
   }
 
   .hero-motion-item,
@@ -225,9 +316,9 @@ body {
   }
 }
 
-/* Campos de formulario — estilo pill */
+/* Campos de formulario — móvil más compacto; sm+ tamaño estándar (text-base = 16px → sin zoom iOS) */
 .input-pill {
-  @apply w-full rounded-full border border-stone-300/60 bg-white/80 px-4 py-3 text-[15px] text-brand-ink shadow-inner shadow-brand-stone/30 placeholder:text-stone-500 focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-sky/40;
+  @apply w-full rounded-full border border-stone-300/60 bg-white/80 px-3 py-2.5 text-base text-brand-ink shadow-inner shadow-brand-stone/30 placeholder:text-stone-500 focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-sky/40 sm:px-4 sm:py-3;
   transition:
     border-color 0.28s var(--motion-ease-soft),
     box-shadow 0.28s var(--motion-ease-soft),
@@ -235,7 +326,7 @@ body {
 }
 
 .select-pill {
-  @apply w-full appearance-none rounded-full border border-stone-300/60 bg-white/80 bg-[length:1rem] bg-[right_1rem_center] bg-no-repeat px-4 py-3 pr-10 text-[15px] text-brand-ink shadow-inner shadow-brand-stone/30 focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-sky/40;
+  @apply w-full appearance-none rounded-full border border-stone-300/60 bg-white/80 bg-[length:1rem] bg-[right_0.875rem_center] bg-no-repeat px-3 py-2.5 pr-9 text-base text-brand-ink shadow-inner shadow-brand-stone/30 focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-sky/40 sm:bg-[right_1rem_center] sm:px-4 sm:py-3 sm:pr-10;
   transition:
     border-color 0.28s var(--motion-ease-soft),
     box-shadow 0.28s var(--motion-ease-soft),
@@ -245,7 +336,7 @@ body {
 
 /* Select personalizado (CustomSelect): mismo lenguaje que input-pill, sin flecha nativa */
 .select-pill-trigger {
-  @apply rounded-full border border-stone-300/60 bg-white/80 px-4 py-3 text-[15px] shadow-inner shadow-brand-stone/30 outline-none;
+  @apply rounded-full border border-stone-300/60 bg-white/80 px-3 py-2.5 text-base shadow-inner shadow-brand-stone/30 outline-none sm:px-4 sm:py-3;
   transition:
     border-color 0.28s var(--motion-ease-soft),
     box-shadow 0.28s var(--motion-ease-soft),
@@ -262,8 +353,7 @@ body {
 
 /* Textareas: mismo lenguaje visual que los inputs, sin forma “píldora” exagerada */
 .textarea-field {
-  @apply w-full resize-y rounded-2xl border border-stone-300/60 bg-white/80 px-4 py-3 text-[15px] leading-relaxed text-brand-ink shadow-inner shadow-brand-stone/30 placeholder:text-stone-500 focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-sky/40;
-  min-height: 7.5rem;
+  @apply min-h-[5.75rem] w-full resize-y rounded-xl border border-stone-300/60 bg-white/80 px-3 py-2.5 text-base leading-relaxed text-brand-ink shadow-inner shadow-brand-stone/30 placeholder:text-stone-500 focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-sky/40 sm:min-h-[7.5rem] sm:rounded-2xl sm:px-4 sm:py-3;
   transition:
     border-color 0.28s var(--motion-ease-soft),
     box-shadow 0.28s var(--motion-ease-soft),

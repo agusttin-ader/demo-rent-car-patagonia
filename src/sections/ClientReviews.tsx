@@ -97,7 +97,7 @@ function ReviewCard({
           <Stars />
         </div>
       </div>
-      <blockquote className="mt-4 flex-1 text-[14px] leading-relaxed text-brand-ink/75 sm:text-[15px]">
+      <blockquote className="mt-4 flex-1 text-base leading-relaxed text-brand-ink/75 min-[1920px]:text-lg">
         “{r.quote}”
       </blockquote>
     </article>
@@ -118,20 +118,20 @@ export function ClientReviews() {
 
   return (
     <section
-      className="border-t border-stone-200/80 bg-brand-cloud py-16 sm:py-20"
+      className="border-t border-stone-200/80 bg-brand-cloud py-12 min-[400px]:py-14 sm:py-20 min-[1920px]:py-24"
       aria-labelledby="reviews-heading"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <Reveal>
           <div className="flex flex-col gap-4 text-center sm:text-left md:flex-row md:items-end md:justify-between">
             <div>
               <h2
                 id="reviews-heading"
-                className="text-balance text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl"
+                className="text-balance text-[clamp(1.5rem,4.5vw+0.5rem,2.25rem)] font-bold tracking-tight text-brand-ink min-[400px]:text-3xl sm:text-4xl min-[1920px]:text-5xl"
               >
                 Opiniones de clientes
               </h2>
-              <p className="mx-auto mt-4 max-w-xl text-pretty text-brand-ink/70 md:mx-0">
+              <p className="mx-auto mt-4 max-w-xl text-pretty text-base text-brand-ink/70 min-[400px]:text-lg md:mx-0 min-[1920px]:max-w-2xl min-[1920px]:text-xl">
                 Comentarios de quienes ya alquilaron y recorrieron la región con
                 nosotros.
               </p>
@@ -145,9 +145,9 @@ export function ClientReviews() {
           </div>
         </Reveal>
 
-        <Reveal delayMs={70} className="relative mx-auto mt-12 max-w-6xl">
+        <Reveal delayMs={70} className="relative mx-auto mt-10 max-w-6xl min-[400px]:mt-12 min-[1920px]:max-w-none">
           <div
-            className="grid grid-cols-1 items-stretch gap-4 sm:grid-cols-3"
+            className="grid grid-cols-1 items-stretch gap-3 min-[400px]:gap-4 sm:grid-cols-3 min-[1920px]:gap-6 min-[2560px]:gap-8"
             aria-live="polite"
             aria-atomic="true"
           >

@@ -71,18 +71,18 @@ export function ContactFormMap() {
   return (
     <section
       id="contacto"
-      className="border-t border-stone-200/80 bg-white py-16 sm:py-20"
+      className="border-t border-stone-200/80 bg-white py-12 min-[400px]:py-14 sm:py-20 min-[1920px]:py-24"
       aria-labelledby="contacto-heading"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <Reveal>
           <h2
             id="contacto-heading"
-            className="text-balance text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl"
+            className="text-balance text-[clamp(1.5rem,4.5vw+0.5rem,2.25rem)] font-bold tracking-tight text-brand-ink min-[400px]:text-3xl sm:text-4xl min-[1920px]:text-5xl"
           >
             Encontranos en la Patagonia
           </h2>
-          <p className="mt-4 max-w-2xl text-pretty text-brand-ink/70">
+          <p className="mt-4 max-w-2xl text-pretty text-base text-brand-ink/70 min-[400px]:text-lg min-[1920px]:max-w-3xl min-[1920px]:text-xl">
             Buscá punto de retiro o elegí zona; coordinamos el detalle por
             WhatsApp.
           </p>
@@ -91,7 +91,7 @@ export function ContactFormMap() {
         <Reveal delayMs={50}>
           <form
             onSubmit={onSearchBranches}
-            className="mt-8 flex max-w-3xl flex-col gap-3 sm:flex-row sm:items-center"
+            className="mt-8 flex max-w-3xl flex-col gap-2 sm:flex-row sm:items-center sm:gap-3 min-[1920px]:max-w-4xl"
           >
           <div className="relative flex-1">
             <input
@@ -99,15 +99,19 @@ export function ContactFormMap() {
               value={branchQuery}
               onChange={(e) => setBranchQuery(e.target.value)}
               placeholder="Busco alquiler en…"
-              className="input-pill w-full pr-12"
+              className="input-pill w-full pr-10 sm:pr-12"
               aria-label="Buscar punto de retiro"
             />
             <Search
-              className="pointer-events-none absolute right-4 top-1/2 size-5 -translate-y-1/2 text-brand-ink/35"
+              className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-brand-ink/35 sm:right-4 sm:size-5"
               aria-hidden
             />
           </div>
-            <Button type="submit" variant="primary" className="w-full shrink-0 sm:w-auto sm:px-8">
+            <Button
+              type="submit"
+              variant="primary"
+              className="w-full shrink-0 py-2.5 text-sm sm:w-auto sm:py-3 sm:px-8 sm:text-base"
+            >
               Buscar
             </Button>
           </form>
@@ -120,7 +124,7 @@ export function ContactFormMap() {
                 key={z.id}
                 type="button"
                 onClick={() => setZone(z.id)}
-                className={`rounded-2xl px-4 py-2.5 text-sm font-semibold transition-[color,background-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] motion-press ${zone === z.id ? 'bg-brand-orange text-white shadow-md shadow-brand-orange/20' : 'bg-stone-100 text-brand-ink ring-1 ring-stone-200 hover:bg-stone-50'}`}
+                className={`rounded-2xl px-3 py-2.5 text-xs font-semibold transition-[color,background-color,box-shadow,transform] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] motion-press min-[400px]:px-4 min-[400px]:text-sm min-[1920px]:px-5 min-[1920px]:text-base ${zone === z.id ? 'bg-brand-orange text-white shadow-md shadow-brand-orange/20' : 'bg-stone-100 text-brand-ink ring-1 ring-stone-200 hover:bg-stone-50'}`}
               >
                 {z.label}
               </button>
@@ -128,20 +132,20 @@ export function ContactFormMap() {
           </div>
         </Reveal>
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:gap-10 lg:items-start">
+        <div className="mt-10 grid gap-8 min-[400px]:mt-12 lg:grid-cols-2 lg:gap-10 lg:items-start min-[1920px]:mt-14 min-[1920px]:gap-12">
           <Reveal delayMs={40}>
             <form
               onSubmit={onSubmit}
-              className="motion-card-lift space-y-4 rounded-3xl border border-stone-200/90 bg-white p-5 shadow-sm shadow-stone-200/40 sm:p-7"
+              className="motion-card-lift space-y-3 rounded-2xl border border-stone-200/90 bg-white p-3 shadow-sm shadow-stone-200/40 sm:space-y-4 sm:rounded-3xl sm:p-7 min-[1920px]:p-8"
             >
-            <div className="border-b border-stone-200/80 pb-4">
-              <h3 className="text-lg font-bold text-brand-ink">Envíanos tu consulta</h3>
-              <p className="mt-1 text-sm text-brand-ink/60">
+            <div className="border-b border-stone-200/80 pb-3 sm:pb-4">
+              <h3 className="text-base font-bold text-brand-ink sm:text-lg">Envíanos tu consulta</h3>
+              <p className="mt-1 text-xs text-brand-ink/60 sm:text-sm">
                 Completá los datos y abrimos WhatsApp con el mensaje listo para enviar.
               </p>
             </div>
             <div>
-              <label htmlFor="contact-name" className="mb-1.5 block text-sm font-medium text-brand-ink">
+              <label htmlFor="contact-name" className="mb-1 block text-sm font-medium text-brand-ink sm:mb-1.5 sm:text-base">
                 Tu nombre
               </label>
               <input
@@ -156,7 +160,7 @@ export function ContactFormMap() {
               />
             </div>
             <div>
-              <label htmlFor="contact-email" className="mb-1.5 block text-sm font-medium text-brand-ink">
+              <label htmlFor="contact-email" className="mb-1 block text-sm font-medium text-brand-ink sm:mb-1.5 sm:text-base">
                 Tu email
               </label>
               <input
@@ -171,7 +175,7 @@ export function ContactFormMap() {
               />
             </div>
             <div>
-              <label htmlFor="contact-phone" className="mb-1.5 block text-sm font-medium text-brand-ink">
+              <label htmlFor="contact-phone" className="mb-1 block text-sm font-medium text-brand-ink sm:mb-1.5 sm:text-base">
                 Tu celular
               </label>
               <input
@@ -186,7 +190,7 @@ export function ContactFormMap() {
               />
             </div>
             <div>
-              <label htmlFor="contact-vehicle" className="mb-1.5 block text-sm font-medium text-brand-ink">
+              <label htmlFor="contact-vehicle" className="mb-1 block text-sm font-medium text-brand-ink sm:mb-1.5 sm:text-base">
                 Elegí tu vehículo
               </label>
               <CustomSelect
@@ -199,21 +203,25 @@ export function ContactFormMap() {
               />
             </div>
             <div>
-              <label htmlFor="contact-message" className="mb-1.5 block text-sm font-medium text-brand-ink">
+              <label htmlFor="contact-message" className="mb-1 block text-sm font-medium text-brand-ink sm:mb-1.5 sm:text-base">
                 Mensaje
               </label>
               <textarea
                 id="contact-message"
                 name="message"
-                rows={4}
+                rows={3}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 className="textarea-field"
                 placeholder="Fechas, lugar de retiro, dudas…"
               />
             </div>
-              <div className="pt-1">
-                <Button type="submit" variant="dark" className="w-full py-3.5 sm:max-w-xs">
+              <div className="pt-0.5 sm:pt-1">
+                <Button
+                  type="submit"
+                  variant="dark"
+                  className="w-full py-2.5 text-sm sm:max-w-xs sm:py-3.5 sm:text-base"
+                >
                   Enviar por WhatsApp
                 </Button>
               </div>
@@ -224,12 +232,12 @@ export function ContactFormMap() {
             <h3 className="text-lg font-bold text-brand-ink">
               Mapa · Parque Nacional Torres del Paine
             </h3>
-            <p className="mt-2 text-[15px] leading-relaxed text-brand-ink/70">
+            <p className="mt-2 text-base leading-relaxed text-brand-ink/70">
               Referencia de la zona del parque para planificar salidas desde Puerto
               Natales.
             </p>
             <div className="mt-4 overflow-hidden rounded-3xl bg-brand-teal p-2 shadow-inner shadow-black/20 ring-1 ring-brand-teal-dark/30">
-              <div className="relative w-full overflow-hidden rounded-2xl bg-brand-teal-dark/20 aspect-[16/10] min-h-[280px] sm:min-h-[320px] lg:min-h-0">
+              <div className="relative aspect-[16/10] min-h-[220px] w-full overflow-hidden rounded-2xl bg-brand-teal-dark/20 min-[400px]:min-h-[250px] sm:min-h-[280px] md:min-h-[300px] lg:min-h-0 min-[1920px]:aspect-[16/9] min-[1920px]:min-h-[min(22rem,42svh)] min-[2560px]:min-h-[min(26rem,45svh)]">
                 <iframe
                   title="Mapa Torres del Paine — OpenStreetMap"
                   src={MAP_EMBED_SRC}

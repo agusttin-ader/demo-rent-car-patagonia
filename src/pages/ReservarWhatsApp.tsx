@@ -16,7 +16,7 @@ export default function ReservarWhatsApp() {
       title="Reservar vía WhatsApp"
       description="Es nuestro canal principal para confirmar disponibilidad, modelo y puntos de retiro o devolución."
     >
-      <p className="mt-6 text-[15px] leading-relaxed text-brand-ink/75">
+      <p className="mt-6 text-base leading-relaxed text-brand-ink/75">
         Si ya completaste fechas y lugar en el buscador del inicio, podés abrir
         WhatsApp con ese mismo mensaje. Si no, igual podés consultarnos y lo
         definimos en el chat.
@@ -25,7 +25,7 @@ export default function ReservarWhatsApp() {
         <Button
           type="button"
           variant="whatsapp"
-          className="w-full py-3.5 sm:w-auto sm:min-w-[220px]"
+          className="w-full py-2.5 text-sm sm:w-auto sm:min-w-[220px] sm:py-3.5 sm:text-base"
           onClick={() =>
             openWhatsApp(
               formatAvailabilityMessage(

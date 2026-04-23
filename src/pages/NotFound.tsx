@@ -6,7 +6,7 @@ export default function NotFound() {
   const navigate = useNavigate()
 
   return (
-    <main className="flex min-h-[70vh] flex-col items-center justify-center bg-white px-4 py-16">
+    <main className="flex min-h-[70vh] flex-col items-center justify-center bg-white px-[max(1rem,env(safe-area-inset-left,0px))] py-12 pr-[max(1rem,env(safe-area-inset-right,0px))] min-[400px]:px-6 min-[400px]:py-16 min-[1920px]:py-20">
       <p
         className="hero-motion-item text-sm font-semibold tabular-nums text-brand-orange"
         style={{ '--hero-delay': '30ms' } as CSSProperties}
@@ -14,13 +14,13 @@ export default function NotFound() {
         Error 404
       </p>
       <h1
-        className="hero-motion-item mt-2 max-w-md text-balance text-center text-2xl font-bold tracking-tight text-brand-ink sm:text-3xl"
+        className="hero-motion-item mt-2 max-w-md text-balance text-center text-[clamp(1.35rem,4vw+0.5rem,1.875rem)] font-bold tracking-tight text-brand-ink min-[400px]:text-2xl sm:text-3xl min-[1920px]:text-4xl"
         style={{ '--hero-delay': '100ms' } as CSSProperties}
       >
         Página no encontrada
       </h1>
       <p
-        className="hero-motion-item mt-4 max-w-sm text-center text-[15px] leading-relaxed text-brand-ink/70"
+        className="hero-motion-item mt-4 max-w-sm text-center text-base leading-relaxed text-brand-ink/70"
         style={{ '--hero-delay': '170ms' } as CSSProperties}
       >
         La página que buscás no existe o fue movida. Volvé al inicio para seguir

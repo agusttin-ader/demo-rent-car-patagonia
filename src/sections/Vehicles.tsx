@@ -70,19 +70,19 @@ export function Vehicles() {
   return (
     <section
       id="flota"
-      className="border-t border-stone-200/80 bg-white py-16 sm:py-20"
+      className="border-t border-stone-200/80 bg-white py-12 min-[400px]:py-14 sm:py-20 min-[1920px]:py-24"
       aria-labelledby="flota-heading"
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="site-container">
         <div className="text-center">
           <Reveal>
             <h2
               id="flota-heading"
-              className="text-balance text-3xl font-bold tracking-tight text-brand-ink sm:text-4xl"
+              className="text-balance text-[clamp(1.5rem,4.5vw+0.5rem,2.25rem)] font-bold tracking-tight text-brand-ink min-[400px]:text-3xl sm:text-4xl min-[1920px]:text-5xl min-[2560px]:text-[3.25rem]"
             >
               Flota más consultada
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-pretty text-brand-ink/70">
+            <p className="mx-auto mt-4 max-w-2xl text-pretty text-base text-brand-ink/70 min-[400px]:text-lg min-[1920px]:max-w-3xl min-[1920px]:text-xl">
               Cuatro categorías con fotos propias; el modelo exacto y la disponibilidad los
               confirmamos por WhatsApp.
             </p>
@@ -90,14 +90,14 @@ export function Vehicles() {
         </div>
 
         <ul
-          className="mt-12 flex list-none snap-x snap-mandatory gap-4 overflow-x-auto pb-3 p-0 sm:grid sm:grid-cols-2 sm:items-stretch sm:gap-5 sm:overflow-visible sm:pb-0 sm:snap-none sm:[grid-auto-rows:1fr] lg:grid-cols-4 lg:gap-6"
+          className="mt-10 grid list-none grid-cols-1 gap-4 p-0 sm:mt-12 sm:grid-cols-2 sm:items-stretch sm:gap-5 sm:[grid-auto-rows:1fr] lg:grid-cols-4 lg:gap-6 min-[1920px]:mt-14 min-[1920px]:gap-7 min-[2560px]:gap-8"
         >
           {fleet.map((v, i) => (
             <Reveal
               key={v.id}
               as="li"
               delayMs={i * 55}
-              className="h-full min-h-[28rem] min-w-[min(100%,280px)] shrink-0 snap-center sm:min-h-0 sm:min-w-0"
+              className="h-full w-full min-h-0"
             >
               <div className="h-full">
                 <VehicleCard
@@ -106,7 +106,7 @@ export function Vehicles() {
                   imageUrl={v.imageSrc}
                   imageAlt={v.imageAlt}
                   specs={v.specs}
-                  imageSizes="(max-width: 639px) 85vw, (max-width: 1023px) 45vw, 22vw"
+                  imageSizes="(max-width: 639px) 100vw, (max-width: 1023px) 45vw, (max-width: 1919px) 22vw, 18vw"
                   priority={i === 0}
                 />
               </div>

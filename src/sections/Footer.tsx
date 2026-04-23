@@ -34,16 +34,16 @@ export function Footer() {
 
   return (
     <footer className="border-t border-brand-sky/25 bg-brand-teal-dark text-stone-300">
-      <div className="mx-auto max-w-7xl space-y-12 px-4 py-14 sm:px-6 lg:px-8">
-        <Reveal className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="site-container space-y-10 py-12 min-[400px]:space-y-12 min-[400px]:py-14 min-[1920px]:space-y-14 min-[1920px]:py-16">
+        <Reveal className="grid gap-8 min-[400px]:gap-10 sm:grid-cols-2 lg:grid-cols-4 min-[1920px]:gap-12 min-[2560px]:gap-14">
           <div>
-            <p className="text-sm font-bold uppercase tracking-wider text-white">
+            <p className="text-base font-bold uppercase tracking-wider text-white">
               Rent a Car Patagonia
             </p>
-            <p className="mt-2 text-sm leading-relaxed text-stone-300">
+            <p className="mt-2 text-base leading-relaxed text-stone-300">
               Puerto Natales, Chile · Puerta de Torres del Paine
             </p>
-            <p className="mt-4 text-sm">
+            <p className="mt-4 text-base">
               <a
                 href={waHref}
                 target="_blank"
@@ -60,8 +60,8 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-sm font-bold text-white">Enlaces útiles</p>
-            <ul className="mt-3 space-y-2 text-sm">
+            <p className="text-base font-bold text-white">Enlaces útiles</p>
+            <ul className="mt-3 space-y-2 text-base">
               {helpLinks.map((l) => (
                 <li key={l.to}>
                   <Link
@@ -76,8 +76,8 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-sm font-bold text-white">Red de emergencia</p>
-            <ul className="mt-3 space-y-2 text-sm">
+            <p className="text-base font-bold text-white">Red de emergencia</p>
+            <ul className="mt-3 space-y-2 text-base">
               {emergencyTel.map((e) => (
                 <li key={e.tel}>
                   <a
@@ -89,14 +89,14 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-            <p className="mt-3 text-xs leading-relaxed text-stone-500">
+            <p className="mt-3 text-sm leading-relaxed text-stone-500">
               También: CONAF, Armada de Chile, SAG — según sitio oficial.
             </p>
           </div>
 
           <div>
-            <p className="text-sm font-bold text-white">Redes</p>
-            <ul className="mt-3 flex flex-wrap gap-4 text-sm">
+            <p className="text-base font-bold text-white">Redes</p>
+            <ul className="mt-3 flex flex-wrap gap-4 text-base">
               {socialLinks.map((s) => (
                 <li key={s.href}>
                   <a
@@ -114,14 +114,14 @@ export function Footer() {
         </Reveal>
 
         <Reveal delayMs={100}>
-          <blockquote className="border-l-4 border-brand-sky/70 pl-5 text-sm italic leading-relaxed text-stone-400 transition-[border-color] duration-500">
+          <blockquote className="border-l-4 border-brand-sky/70 pl-5 text-base italic leading-relaxed text-stone-400 transition-[border-color] duration-500">
             “Conecta tu ser interior con la Naturaleza. Respeta la flora y fauna y
             disfruta sin prisa” — Rent a Car Patagonia
           </blockquote>
         </Reveal>
 
         <Reveal delayMs={160}>
-          <div className="flex flex-col gap-3 border-t border-white/10 pt-8 text-xs text-stone-500 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-3 border-t border-white/10 pt-8 text-sm text-stone-500 sm:flex-row sm:items-center sm:justify-between">
             <p>Copyright © {new Date().getFullYear()} Rent a Car Patagonia</p>
             <p>Diseñado por Agustin Ader, developer.</p>
           </div>

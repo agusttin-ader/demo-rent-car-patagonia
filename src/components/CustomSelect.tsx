@@ -121,7 +121,7 @@ export function CustomSelect({
       >
         {DisplayIcon ? (
           <DisplayIcon
-            className="size-[1.125rem] shrink-0 text-brand-teal/90"
+            className="size-4 shrink-0 text-brand-teal/90 sm:size-[1.125rem]"
             strokeWidth={1.75}
             aria-hidden
           />
@@ -129,7 +129,7 @@ export function CustomSelect({
         <span className="min-w-0 flex-1 truncate">{displayLabel}</span>
         <ChevronDown
           strokeWidth={2}
-          className={`size-4 shrink-0 text-brand-ink/45 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+          className={`size-3.5 shrink-0 text-brand-ink/45 transition-transform duration-200 sm:size-4 ${open ? 'rotate-180' : ''}`}
           aria-hidden
         />
       </button>
@@ -139,7 +139,7 @@ export function CustomSelect({
           id={listId}
           role="listbox"
           tabIndex={-1}
-          className="absolute left-0 right-0 z-[200] mt-1.5 max-h-[min(20rem,60vh)] overflow-y-auto rounded-2xl border border-stone-200/90 bg-white py-1.5 shadow-xl shadow-brand-teal/12 ring-1 ring-stone-900/5"
+          className="absolute left-0 right-0 z-[200] mt-1.5 max-h-[min(16rem,52svh)] overflow-y-auto rounded-xl border border-stone-200/90 bg-white py-1 shadow-xl shadow-brand-teal/12 ring-1 ring-stone-900/5 sm:max-h-[min(20rem,60vh)] sm:rounded-2xl sm:py-1.5"
         >
           {options.map((opt, i) => {
             const Icon = opt.icon
@@ -151,7 +151,7 @@ export function CustomSelect({
                   type="button"
                   role="option"
                   aria-selected={isSelected}
-                  className={`flex w-full items-center gap-2.5 px-3 py-2.5 text-left text-[15px] transition-colors duration-150 ${
+                  className={`flex w-full items-center gap-2 px-2.5 py-2 text-left text-base transition-colors duration-150 sm:gap-2.5 sm:px-3 sm:py-2.5 min-[1920px]:px-3.5 min-[1920px]:py-3 min-[1920px]:text-[1.125rem] ${
                     isHi ? 'bg-brand-teal/[0.07]' : ''
                   } ${
                     isSelected
