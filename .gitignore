@@ -1,0 +1,78 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# Build / bundlers
+dist
+dist-ssr
+build
+*.local
+.vite
+.cache
+.parcel-cache
+.turbo
+.next
+out
+.nuxt
+.output
+
+# TypeScript
+*.tsbuildinfo
+
+# Tests / coverage
+coverage
+*.lcov
+.nyc_output
+
+# Environment (mantener plantillas: .env.example)
+.env
+.env.*
+!.env.example
+
+# Vercel / Netlify / Cloudflare
+.vercel
+.netlify
+.wrangler
+.dev.vars
+
+# ESLint / Prettier (caché local)
+.eslintcache
+.stylelintcache
+.prettiercache
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor / IDE
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swp
+*~
+
+# Misc
+*.pem

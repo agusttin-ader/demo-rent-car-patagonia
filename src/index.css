@@ -1,0 +1,271 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans:
+    'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji';
+
+  /*
+   * Paleta Adobe (acantilado / amanecer)
+   * Acentos: #F21651 · #193B59 · #48A1D9 · #7EB6D9
+   * Fondos: blanco + #f4f8fb (brand-cloud) para bandas muy suaves
+   */
+  --color-brand-sky: #48a1d9;
+  --color-brand-orange: #f21651;
+  --color-brand-orange-hover: #c91145;
+  --color-brand-teal: #7eb6d9;
+  --color-brand-teal-dark: #193b59;
+  --color-brand-ink: #193b59;
+  /* Fondos muy claros: predominio de blanco; acento de paleta solo en acentos UI */
+  --color-brand-cream: #ffffff;
+  --color-brand-stone: #d4e4f0;
+  --color-brand-cloud: #f4f8fb;
+
+  /* Motion — curvas “premium”, livianas */
+  --motion-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-duration: 0.72s;
+  --motion-duration-short: 0.4s;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  background-color: var(--color-brand-cream);
+  color: var(--color-brand-ink);
+  overflow-x: clip;
+}
+
+#root {
+  overflow-x: clip;
+}
+
+/* —— Scroll reveal (IntersectionObserver + .motion-reveal-visible) —— */
+.motion-reveal {
+  --reveal-delay: 0ms;
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  filter: blur(0);
+  transition:
+    opacity var(--motion-duration) var(--motion-ease-out),
+    transform var(--motion-duration) var(--motion-ease-out);
+  transition-delay: var(--reveal-delay);
+  will-change: opacity, transform;
+}
+
+.motion-reveal-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* —— Hero (above the fold, sin esperar scroll) —— */
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes hero-media {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.hero-motion-item {
+  opacity: 0;
+  animation: hero-rise var(--motion-duration) var(--motion-ease-out) forwards;
+  animation-delay: var(--hero-delay, 0ms);
+}
+
+.hero-motion-media {
+  opacity: 0;
+  animation: hero-media 0.88s var(--motion-ease-out) forwards;
+  animation-delay: var(--hero-media-delay, 0.12s);
+}
+
+/* —— Tarjetas / enlaces interactivos —— */
+.motion-card-lift {
+  transition:
+    transform var(--motion-duration-short) var(--motion-ease-soft),
+    box-shadow var(--motion-duration-short) var(--motion-ease-soft),
+    border-color var(--motion-duration-short) var(--motion-ease-soft);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .motion-card-lift:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 20px 44px -20px color-mix(in srgb, var(--color-brand-ink) 16%, transparent),
+      0 0 0 1px color-mix(in srgb, var(--color-brand-teal) 22%, transparent);
+  }
+}
+
+.motion-img-zoom {
+  transition: transform 0.65s var(--motion-ease-soft);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .motion-card-lift:hover .motion-img-zoom {
+    transform: scale(1.04);
+  }
+}
+
+.motion-press:active {
+  transform: scale(0.98);
+}
+
+/* —— FAB entrada —— */
+@keyframes fab-in {
+  from {
+    opacity: 0;
+    transform: scale(0.86) translate3d(0, 10px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+.motion-fab {
+  animation: fab-in 0.65s var(--motion-ease-out) 0.35s both;
+}
+
+/* Tipografía máscara (FinalCta — imagen detrás del texto) */
+@keyframes patagonia-mask-drift {
+  0%,
+  100% {
+    background-position: 50% 52%;
+  }
+  50% {
+    background-position: 50% 48%;
+  }
+}
+
+.motion-mask-drift {
+  animation: patagonia-mask-drift 14s var(--motion-ease-soft) infinite;
+}
+
+/* —— Reviews carousel (alineado al mismo easing) —— */
+@keyframes reviews-carousel-in {
+  from {
+    opacity: 0.55;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reviews-carousel-panel {
+  animation: reviews-carousel-in 0.6s var(--motion-ease-out) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .motion-reveal,
+  .motion-reveal-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
+    will-change: auto;
+  }
+
+  .hero-motion-item,
+  .hero-motion-media {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+
+  .motion-fab {
+    animation: none;
+  }
+
+  .motion-mask-drift {
+    animation: none;
+  }
+
+  .motion-fab:hover,
+  .motion-fab:active {
+    transform: none;
+  }
+
+  .motion-card-lift:hover {
+    transform: none;
+  }
+
+  .motion-card-lift:hover .motion-img-zoom {
+    transform: none;
+  }
+
+  .motion-press:active {
+    transform: none;
+  }
+
+  .reviews-carousel-panel {
+    animation: none;
+  }
+}
+
+/* Campos de formulario — estilo pill */
+.input-pill {
+  @apply w-full rounded-full border border-stone-300/60 bg-white/80 px-4 py-3 text-[15px] text-brand-ink shadow-inner shadow-brand-stone/30 placeholder:text-stone-500 focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-sky/40;
+  transition:
+    border-color 0.28s var(--motion-ease-soft),
+    box-shadow 0.28s var(--motion-ease-soft),
+    background-color 0.28s var(--motion-ease-soft);
+}
+
+.select-pill {
+  @apply w-full appearance-none rounded-full border border-stone-300/60 bg-white/80 bg-[length:1rem] bg-[right_1rem_center] bg-no-repeat px-4 py-3 pr-10 text-[15px] text-brand-ink shadow-inner shadow-brand-stone/30 focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-sky/40;
+  transition:
+    border-color 0.28s var(--motion-ease-soft),
+    box-shadow 0.28s var(--motion-ease-soft),
+    background-color 0.28s var(--motion-ease-soft);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23193B59'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m19 9-7 7-7-7'/%3E%3C/svg%3E");
+}
+
+/* Select personalizado (CustomSelect): mismo lenguaje que input-pill, sin flecha nativa */
+.select-pill-trigger {
+  @apply rounded-full border border-stone-300/60 bg-white/80 px-4 py-3 text-[15px] shadow-inner shadow-brand-stone/30 outline-none;
+  transition:
+    border-color 0.28s var(--motion-ease-soft),
+    box-shadow 0.28s var(--motion-ease-soft),
+    background-color 0.28s var(--motion-ease-soft);
+}
+
+.select-pill-trigger:focus-visible {
+  @apply border-brand-orange ring-2 ring-brand-sky/45;
+}
+
+.select-pill-trigger:not(:disabled):hover {
+  @apply border-stone-400/50 bg-white;
+}
+
+/* Textareas: mismo lenguaje visual que los inputs, sin forma “píldora” exagerada */
+.textarea-field {
+  @apply w-full resize-y rounded-2xl border border-stone-300/60 bg-white/80 px-4 py-3 text-[15px] leading-relaxed text-brand-ink shadow-inner shadow-brand-stone/30 placeholder:text-stone-500 focus:border-brand-orange focus:outline-none focus:ring-2 focus:ring-brand-sky/40;
+  min-height: 7.5rem;
+  transition:
+    border-color 0.28s var(--motion-ease-soft),
+    box-shadow 0.28s var(--motion-ease-soft),
+    background-color 0.28s var(--motion-ease-soft);
+}
